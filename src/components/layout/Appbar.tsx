@@ -19,7 +19,7 @@ function Appbar({signIn, isAuth}: Props) {
         LOGO
       </div>
       <div className="flex">
-        {!isAuth ? (<button className='btn-1' onClick={()=>{signIn("discord")}} aria-label='Sign in button'>Sign in</button>) : null}
+        {!isAuth ? (<button className='btn-1' onClick={()=>{signIn()}} aria-label='Sign in button'>Sign in</button>) : null}
         <div className="w-12 h-12 mx-2 rounded-full overflow-hidden bg-gray-400 dark:bg-gray-600"></div>
       </div>
     </header>
