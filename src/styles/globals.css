@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@layer components {
+    .btn-1{
+        @apply px-4 py-1 mx-2 bg-gray-500 hover:bg-gray-400 dark:bg-gray-700 hover:dark:bg-gray-600 rounded-md text-gray-100 dark:text-gray-300 transition-colors
+    }
+}
