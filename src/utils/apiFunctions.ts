@@ -1,8 +1,8 @@
 import { trpc } from "./trpc"
 
 // Get entry
-export const getProjects = (id: {userId?: string, connectedProjectId?: string}) =>{
-    return trpc.projects.getProjects.useQuery(id)
+export const getProjects = () =>{
+    return trpc.projects.getProjects.useQuery()
 }
 
 export const getProject = (projectId: string) =>{}
@@ -16,7 +16,9 @@ export const getFields = (categoryId: string) =>{}
 export const getField = (fieldId: string) =>{}
 
 // Create new entry
-export const createProject = (userId: string) =>{}
+export const createProject = (name: string) =>{
+   return trpc.projects.createProject.useMutation().mutate(name)
+}
 
 export const createCategory = (projectId: string) =>{}
 

@@ -1,15 +1,18 @@
 import { z } from "zod";
 
-import { router, publicProcedure } from "../trpc";
+import { router, publicProcedure, protectedProcedure } from "../trpc";
 
 export const projectsRouter = router({
   getProjects: publicProcedure
-    .input(z.object({ userId: z.string().nullish(), connectedProjectId: z.string().nullish() }).nullish())
-    .query(({ input }) => {
-      if(input?.userId){
-        const projects = prisma?.user.findUnique({where: {id: input.userId}}).projects
-        return projects
+    .query(({ ctx }) => {
+     if(ctx.session?.user){
+       return prisma?.project.findMany({where: {userId: ctx.session?.user?.id}})
       }
-      if(input?.connectedProjectId){}
+      return []
     }),
+  createProject: protectedProcedure
+    .input(z.string())
+    .mutation(({input, ctx})=>{
+      const newProject = prisma?.project.create({data: {name: input, userId: ctx.session.user.id}})
+    })
 });
