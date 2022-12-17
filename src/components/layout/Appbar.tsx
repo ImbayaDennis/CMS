@@ -3,8 +3,8 @@ import Image from 'next/image';
 import React from 'react'
 
 type Props = {
-  signIn: (provider?: string) => any;
-  signOut: () => any;
+  signIn: () => void;
+  signOut: () => void;
   isAuth: boolean
   imgUrl: string
 }

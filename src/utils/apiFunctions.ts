@@ -16,8 +16,8 @@ export const getFields = (categoryId: string) =>{}
 export const getField = (fieldId: string) =>{}
 
 // Create new entry
-export const createProject = (name: string) =>{
-   return trpc.projects.createProject.useMutation().mutate(name)
+export const createProject = () =>{
+   return trpc.projects.createProject.useMutation()
 }
 
 export const createCategory = (projectId: string) =>{}

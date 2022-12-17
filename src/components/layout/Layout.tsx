@@ -7,9 +7,9 @@ type Props = {
 
 function Layout({children}: Props) {
   return (
-    <div className='dark w-screen h-screen overflow-hidden'>
+    <div className='dark w-screen h-screen overflow-hidden z-0'>
         <AppbarContainer/>
-        <div className='w-full h-full bg-gray-100 dark:bg-gray-800'>{children}</div>
+        <main className='w-full h-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'>{children}</main>
     </div>
   )
 }
