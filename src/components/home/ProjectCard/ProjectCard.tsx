@@ -11,15 +11,22 @@ type ProjectCardProps = {
 const ProjectCard = ({projectName, projectId, children, toggleModal}: ProjectCardProps) =>{
   const className = "w-28 h-28 m-2 bg-gray-300 hover:text-orange-700 hover:dark:text-orange-300 dark:bg-gray-700 rounded-md shadow-md flex justify-center items-center text-gray-700 dark:text-gray-300"
 
+  let projectCard;
+
   if(projectId){
-  return(
-  <Link href={`/${projectId}`} aria-label={`${projectName}`} className={className}>
-    <p>{projectName}</p>
-  </Link>
-  )
+    projectCard = (
+    <Link href={`/${projectId}`} aria-label={`${projectName}`} className={className}>
+      <p>{projectName}</p>
+    </Link>
+    )
   }else{
-    return <button aria-label="Add project" onClick={toggleModal} className={className}>{children}</button>
+    projectCard = <button aria-label="Add project" onClick={toggleModal} className={className}>{children}</button>
   }
+  return(
+  <div>{projectCard}</div>
+  )
+  
+  
 }
 
 export default ProjectCard
