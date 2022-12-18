@@ -11,19 +11,21 @@ const ModalContainer = ({child, modal}: Props) => {
     
   const modalContext = useContext(ModalContextProvider)
 
-  let activeModal: {isOpen: boolean};
-
-  modalContext.modals ? activeModal = modalContext?.modals[modal] : activeModal = {isOpen: false}
-
-    const closeModal = () =>{
+  const closeModal = () =>{
     if(modalContext.setModals){
       modalContext.setModals((prev)=> ({ ...prev, createProject: {isOpen: false}}))
     }
   }
 
+  addEventListener('keydown', (e)=>{
+   if(e.code === "Escape"){
+    closeModal()
+   }
+  })
+
   if(modalContext?.modals && modalContext?.modals[modal].isOpen){
     return (
-      <Modal child={child} isOpen={activeModal.isOpen} closeModal={closeModal} />
+      <Modal child={child} closeModal={closeModal} />
     )
   }
   return<></>

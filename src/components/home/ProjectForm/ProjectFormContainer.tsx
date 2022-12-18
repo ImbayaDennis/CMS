@@ -1,8 +1,8 @@
 import { useSession } from 'next-auth/react'
 import React, { ChangeEvent, FormEvent, useState, useContext } from 'react'
-import { createProject } from '../../utils/apiFunctions'
+import { createProject } from '../../../utils/apiFunctions'
 import ProjectForm from './ProjectForm'
-import { ModalContextProvider } from '../../contexts/ModalsContext'
+import { ModalContextProvider } from '../../../contexts/ModalsContext'
 
 type Props = {
     refetchProjects: () => any
@@ -13,21 +13,22 @@ const ProjectFormContainer = ({refetchProjects}: Props) => {
   const {data: session} = useSession()
   const {setModals} = useContext(ModalContextProvider)
   
+  const newProject = createProject()
+  
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>{
     setProjectNme(e.target.value)
   }
 
-  const newProject = createProject()
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) =>{
     e.preventDefault()
     if(session?.user){
-      newProject.mutate({name: projectName})
-      refetchProjects()
+      newProject.mutateAsync({name: projectName}).then(()=> refetchProjects())
+      
     }
     setProjectNme("")
     setModals ? setModals(prev=>({...prev, createProject: {isOpen: false}})) : null
   }
+
   return (
         <ProjectForm handleSubmit={handleSubmit} name={`projectName`} value={projectName} onChange={handleChange} />
   )

@@ -5,12 +5,13 @@ type Props = {
     value: string;
     placeholder?: string;
     error?: {}
+    autoFocus?: boolean
     onChange: (e: ChangeEvent<HTMLInputElement>)=> void;
 }
 
-const FormTextInput = ({name, placeholder, value, onChange, error = {}}: Props) => {
+const FormTextInput = ({name, placeholder, value, onChange, autoFocus, error = {}}: Props) => {
   return (
-    <input className='form-input' autoFocus name={name} placeholder={placeholder} value={value} onChange={onChange} type='text' />
+    <input className='form-input' autoFocus={autoFocus} name={name} placeholder={placeholder} value={value} onChange={onChange} type='text' />
   )
 }
 

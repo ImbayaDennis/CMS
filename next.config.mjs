@@ -17,10 +17,6 @@ const config = {
       },
       {
         protocol: 'https',
-        hostname: 'icons8.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'cdn.discordapp.com',
       },
     ],

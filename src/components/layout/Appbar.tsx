@@ -1,12 +1,12 @@
 import Head from 'next/head'
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import React from 'react'
 
 type Props = {
   signIn: () => void;
   signOut: () => void;
   isAuth: boolean
-  imgUrl: string
+  imgUrl: string | StaticImageData
 }
 
 function Appbar({signIn, signOut, isAuth, imgUrl}: Props) {
@@ -22,7 +22,7 @@ function Appbar({signIn, signOut, isAuth, imgUrl}: Props) {
         LOGO
       </div>
       <div className="flex items-center">
-        {!isAuth ? (<button className='btn-1' onClick={()=>{signIn()}} aria-label='Sign in button'>Sign in</button>) : (<button className='btn-1' onClick={()=>{signOut()}} aria-label='Sign out button'>Sign out</button>)}
+        {!isAuth ? (<button className='btn-1' onClick={signIn} aria-label='Sign in button'>Sign in</button>) : (<button className='btn-1' onClick={signOut} aria-label='Sign out button'>Sign out</button>)}
         <div className="w-12 h-12 mx-2 rounded-full overflow-hidden bg-gray-400 dark:bg-gray-600 cursor-pointer">
           <Image src={imgUrl} alt="prof-pic" width={100} height={100} priority={isAuth} />
         </div>

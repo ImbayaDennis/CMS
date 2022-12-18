@@ -4,7 +4,7 @@ import { SessionProvider } from "next-auth/react";
 
 import { trpc } from "../utils/trpc";
 
-import "../styles/globals.css";
+import "../assets/styles/globals.css";
 import Layout from "../components/layout/Layout";
 import ModalsContext from "../contexts/ModalsContext";
 

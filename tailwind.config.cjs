@@ -6,6 +6,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    // require('tailwindcss-scrollbar')
+    require('tailwindcss-scrollbar')
   ],
 };

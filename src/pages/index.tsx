@@ -1,11 +1,9 @@
-import { type NextPage } from "next";
-import Loader from "../components/common/Loader";
-import ProjectCardContainer from "../components/home/ProjectCard/ProjectCardContainer";
-import ProjectFormContainer from "../components/home/ProjectFormContainer";
-import { getProjects } from "../utils/apiFunctions";
-import { HiPlusCircle } from 'react-icons/hi'
-import ModalContainer from "../components/common/Modal/ModalContainer";
-import { useSession } from "next-auth/react";
+import { NextPage } from 'next'
+import React from 'react'
+import Loader from '../components/common/Loader'
+import { useSession } from 'next-auth/react'
+import { getProjects } from '../utils/apiFunctions'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   const {data: session} = useSession()
@@ -21,12 +19,8 @@ const Home: NextPage = () => {
 
   if(session){
     return (
-        <div className="container mx-auto flex flex-col min-h-screen p-4">
-          <div className="w-full flex flex-wrap justify-center md:justify-start">
-            { !isLoading ? projects?.map((project)=><ProjectCardContainer key={project.id} projectName={project.name} projectId={project.id} />) : <Loader/>}
-            <ProjectCardContainer children={<HiPlusCircle className="text-4xl" />} />
-          </div>
-          <ModalContainer child={<ProjectFormContainer refetchProjects={refetch} />} modal="createProject" />
+        <div className="container mx-auto flex flex-col min-h-screen p-4 justify-center items-center">
+            <button className="btn-1"><Link href="/projects" >View projects</Link></button>
         </div> 
     );
   }
@@ -34,7 +28,6 @@ const Home: NextPage = () => {
   return <div className="flex items-center justify-center w-full h-full">
     <p>Sign in to access content</p>
   </div>
+}
 
-};
-
-export default Home;
+export default Home
