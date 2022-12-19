@@ -1,5 +1,5 @@
 import React, { FormEvent } from 'react'
-import FormTextInput from '../../common/FormTextInput'
+import FormTextInput from '../../common/Form/FormTextInput'
 import Loader from '../../common/Loader';
 
 type Props = {

@@ -1,7 +1,7 @@
 import { signIn, signOut, useSession } from 'next-auth/react'
 import React from 'react'
 import Appbar from './Appbar'
-import img from "../../assets/images/blank-profile-picture.jpg";
+import img from "../../../assets/images/blank-profile-picture.jpg";
 
 type Props = {}
 

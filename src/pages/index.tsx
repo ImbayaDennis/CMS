@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
   if(session){
     return (
-        <div className="container mx-auto flex flex-col min-h-screen p-4 justify-center items-center">
+        <div className="container mx-auto flex flex-col min-h-screen p-4 items-center">
             <button className="btn-1"><Link href="/projects" >View projects</Link></button>
         </div> 
     );
