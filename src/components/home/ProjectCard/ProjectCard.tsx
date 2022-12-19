@@ -15,7 +15,7 @@ const ProjectCard = ({projectName, projectId, children, toggleModal}: ProjectCar
 
   if(projectId){
     projectCard = (
-    <Link href={`/${projectId}`} aria-label={`${projectName}`} className={className}>
+    <Link href={`/projects/${projectId}`} aria-label={`${projectName}`} className={className}>
       <p>{projectName}</p>
     </Link>
     )
