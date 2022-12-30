@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Loader from "../../components/common/Loader";
-import ProjectCardContainer from "../../components/home/ProjectCard/ProjectCardContainer";
-import ProjectFormContainer from "../../components/home/ProjectForm/ProjectFormContainer";
+import ProjectCardContainer from "../../components/projects/ProjectCard/ProjectCardContainer";
+import ProjectFormContainer from "../../components/projects/ProjectForm/ProjectFormContainer";
 import { getProjects } from "../../utils/apiFunctions";
 import { HiPlusCircle } from 'react-icons/hi'
 import ModalContainer from "../../components/common/Modal/ModalContainer";

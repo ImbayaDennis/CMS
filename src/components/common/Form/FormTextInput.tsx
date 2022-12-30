@@ -1,6 +1,7 @@
 import React, { ChangeEvent } from 'react'
 
 type Props = {
+    id?: string;
     name: string;
     value: string;
     placeholder?: string;
@@ -9,9 +10,9 @@ type Props = {
     onChange: (e: ChangeEvent<HTMLInputElement>)=> void;
 }
 
-const FormTextInput = ({name, placeholder, value, onChange, autoFocus, error = {}}: Props) => {
+const FormTextInput = ({id, name, placeholder, value, onChange, autoFocus, error = {}}: Props) => {
   return (
-    <input className='form-input' autoFocus={autoFocus} name={name} placeholder={placeholder} value={value} onChange={onChange} type='text' />
+    <input className='form-input' id={id} autoFocus={autoFocus} name={name} placeholder={placeholder} value={value} onChange={onChange} type='text' />
   )
 }
 

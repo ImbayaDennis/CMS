@@ -55,6 +55,10 @@ const connectedProject = async (req: NextApiRequest, res: NextApiResponse) => {
       CleanObjArr.push({
         [CategoryName]: Fields,
       });
+
+      CategoryName = ""
+      FieldName = ""
+      Fields = []
     });
 
     return CleanObjArr;

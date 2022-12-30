@@ -9,7 +9,7 @@ type ProjectCardProps = {
 }
 
 const ProjectCard = ({projectName, projectId, children, toggleModal}: ProjectCardProps) =>{
-  const className = "w-28 h-28 m-2 bg-gray-300 hover:text-orange-700 hover:dark:text-orange-300 hover:scale-105 dark:bg-gray-700 rounded-md shadow-md flex justify-center items-center text-gray-700 dark:text-gray-300 transition-all duration-150"
+  const className = "w-28 h-28 m-2 bg-gray-300 hover:text-orange-600 hover:dark:text-orange-300 hover:scale-105 dark:bg-gray-700 rounded-md shadow-md flex justify-center items-center text-gray-700 dark:text-gray-300 transition-all duration-150"
 
   let projectCard;
 

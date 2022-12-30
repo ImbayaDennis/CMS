@@ -1,8 +1,8 @@
 import { useSession } from 'next-auth/react'
 import React, { ChangeEvent, FormEvent, useState, useContext } from 'react'
 import { createProject } from '../../../utils/apiFunctions'
+import ProjectForm from './ProjectForm'
 import { ModalContextProvider } from '../../../contexts/ModalsContext'
-import ProjectForm from '../../projects/ProjectForm/ProjectForm'
 
 type Props = {
     refetchProjects: () => any

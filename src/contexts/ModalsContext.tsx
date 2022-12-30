@@ -8,6 +8,12 @@ type Modals = {
     "createProject": {
         isOpen: boolean;
     };
+    "createCategory": {
+        isOpen: boolean;
+    };
+    "createField": {
+        isOpen: boolean;
+    };
 }
 
 type ModalsContext = {
@@ -20,7 +26,9 @@ export const ModalContextProvider = createContext<ModalsContext>({})
 const ModalsContext = ({children}: Props) => {
 
   const [modals, setModals] = useState<Modals>({
-    "createProject": {isOpen: false} 
+    "createProject": {isOpen: false},
+    "createCategory": {isOpen: false},
+    "createField": {isOpen: false},
   })
 
   const value: ModalsContext = {modals, setModals}

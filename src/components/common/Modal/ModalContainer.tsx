@@ -4,7 +4,7 @@ import Modal from './Modal'
 
 type Props = {
     child: ReactNode;
-    modal: "createProject"
+    modal: "createProject" | "createCategory" | "createField"
 }
 
 const ModalContainer = ({child, modal}: Props) => {
@@ -14,6 +14,8 @@ const ModalContainer = ({child, modal}: Props) => {
   const closeModal = () =>{
     if(modalContext.setModals){
       modalContext.setModals((prev)=> ({ ...prev, createProject: {isOpen: false}}))
+      modalContext.setModals((prev)=> ({ ...prev, createCategory: {isOpen: false}}))
+      modalContext.setModals((prev)=> ({ ...prev, createField: {isOpen: false}}))
     }
   }
 

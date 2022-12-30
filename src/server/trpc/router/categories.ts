@@ -4,7 +4,7 @@ import { router, publicProcedure, protectedProcedure } from "../trpc";
 
 export const categoryRouter = router({
     getCategories: publicProcedure
-    .input(z.object({projectId: z.string()}))
+    .input(z.object({projectId: z.any()}))
     .query(({input})=>{
       if(input.projectId){
        return prisma?.category.findMany({where: {projectId: input.projectId}})
