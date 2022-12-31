@@ -24,7 +24,6 @@ const CategoriesForm = ({name, value, isLoading, onChange, handleSubmit}: Props)
           autoFocus
           value={value}
           onChange={onChange}
-          error
         />
         <button type="submit" className="btn-1">
           {isLoading ? <Loader /> : "Create"}
