@@ -19,7 +19,7 @@ const ProjectCardContainer = ({projectId, projectName, children}: Props) => {
   }
 
   return (
-    <ProjectCard children={children} projectId={projectId} projectName={projectName} toggleModal={toggleModal} />
+    <ProjectCard projectId={projectId} projectName={projectName} toggleModal={toggleModal}>{children}</ProjectCard>
   )
 }
 
