@@ -14,17 +14,14 @@ const ProjectCard = ({projectName, projectId, children, toggleModal}: ProjectCar
   let projectCard;
 
   if(projectId){
-    projectCard = (
+    return (
     <Link href={`/projects/${projectId}`} aria-label={`${projectName}`} className={className}>
       <p>{projectName}</p>
     </Link>
     )
   }else{
-    projectCard = <button aria-label="Add project" onClick={toggleModal} className={className}>{children}</button>
+    return <button aria-label="Add project" onClick={toggleModal} className={className}>{children}</button>
   }
-  return(
-  <div>{projectCard}</div>
-  )
   
   
 }
