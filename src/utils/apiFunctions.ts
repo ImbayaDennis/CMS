@@ -13,13 +13,13 @@ export const getCategories = ({projectId}: any) =>{
     return trpc.categories.getCategories.useQuery({projectId})
 }
 
-export const getCategory = (categoryId: string) =>{}
+// export const getCategory = (categoryId: string) =>{}
 
 export const getFields = (categoryId: string | null) =>{
     return trpc.fields.getFields.useQuery({categoryId})
 }
 
-export const getField = (fieldId: string) =>{}
+// export const getField = (fieldId: string) =>{}
 
 // Create new entry
 export const createProject = () =>{
@@ -35,15 +35,15 @@ export const createField = () =>{
 }
 
 // Modify entry
-export const updateProject = (projectId: string) =>{}
+// export const updateProject = (projectId: string) =>{}
 
-export const updateCategory = (categoryId: string) =>{}
+// export const updateCategory = (categoryId: string) =>{}
 
-export const updateField = (fieldId: string) =>{}
+// export const updateField = (fieldId: string) =>{}
 
 // Delete entry
-export const deleteProject = (projectId: string) =>{}
+// export const deleteProject = (projectId: string) =>{}
 
-export const deleteCategory = (categoryId: string) =>{}
+// export const deleteCategory = (categoryId: string) =>{}
 
-export const deleteField = (fieldId: string) =>{}
+// export const deleteField = (fieldId: string) =>{}
