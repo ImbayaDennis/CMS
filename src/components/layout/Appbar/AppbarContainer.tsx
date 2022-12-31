@@ -8,8 +8,8 @@ type Props = {}
 const AppbarContainer = (props: Props) => {
   const {data} = useSession()
 
-  let isAuth = data ? true : false
-  let imgUrl = data?.user?.image ? data?.user?.image : img
+  const isAuth = data ? true : false
+  const imgUrl = data?.user?.image ? data?.user?.image : img
 
   return (
     <Appbar signIn={signIn} signOut={signOut} isAuth={isAuth} imgUrl={imgUrl} />

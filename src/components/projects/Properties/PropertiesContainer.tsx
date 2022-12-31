@@ -20,14 +20,6 @@ const PropertiesContainer = ({ category }: Props) => {
     [input: string]: string | number | boolean;
   }>();
 
-  type TCleanObjArr = {
-    [name: string]: {
-      [name: string]: string | number | boolean;
-    }[];
-  }[];
-
-  let CleanObjArr: TCleanObjArr = [];
-  let CategoryName: string;
   let FieldName: string;
   let Fields: any[] = [];
 

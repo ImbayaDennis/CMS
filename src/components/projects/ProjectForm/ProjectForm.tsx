@@ -8,14 +8,14 @@ type Props = {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     isLoading?: boolean
-    errors?: {}
+    errors?: Record<string, unknown>
 }
 
 const ProjectForm = ({handleSubmit, name, value, onChange, isLoading = false}: Props) => {
   return (
     <form onSubmit={handleSubmit} className="p-2 flex flex-col items-center space-y-4" >
       <legend className="text-3xl font-light px-4">Create new project</legend>
-      <FormTextInput name={name} autoFocus value={value} onChange={onChange} error />
+      <FormTextInput name={name} autoFocus value={value} onChange={onChange} />
       <button  type="submit" className="btn-1">
         {isLoading ? <Loader/> : "Create"}
       </button>

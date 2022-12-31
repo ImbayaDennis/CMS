@@ -5,7 +5,7 @@ type Props = {
     name: string;
     value: string;
     placeholder?: string;
-    error?: {}
+    error?: Record<string, unknown>
     autoFocus?: boolean
     onChange: (e: ChangeEvent<HTMLInputElement>)=> void;
 }
