@@ -60,9 +60,9 @@ const PropertiesContainer = ({ category }: Props) => {
     type: "string" | "textarea" | "number" | "boolean" | "image",
     content: any
   ) => {
-    if (category) {
-      newField.mutateAsync({ name, categoryId, type, content });
-    }
+    // if (category) {
+    //   newField.mutateAsync({ name, categoryId, type, content });
+    // }
   };
 
   const {setModals} = useContext(ModalContextProvider)
