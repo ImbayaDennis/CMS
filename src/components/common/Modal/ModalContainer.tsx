@@ -27,7 +27,7 @@ const ModalContainer = ({children, modal}: Props) => {
 
   if(modalContext?.modals && modalContext?.modals[modal].isOpen){
     return (
-      <Modal child={children} closeModal={closeModal} />
+      <Modal closeModal={closeModal}>{children}</Modal>
     )
   }
   return<></>

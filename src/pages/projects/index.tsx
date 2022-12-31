@@ -26,7 +26,7 @@ const Projects: NextPage = () => {
         <div className="container mx-auto flex flex-col min-h-screen p-4">
           <div className="w-full flex flex-wrap justify-center md:justify-start">
             { !isLoading ? projects?.map((project)=><ProjectCardContainer key={project.id} projectName={project.name} projectId={project.id} />) : <Loader/>}
-            <ProjectCardContainer children={<HiPlusCircle className="text-4xl" />} />
+            <ProjectCardContainer><HiPlusCircle className="text-4xl" /></ProjectCardContainer>
           </div>
           <ModalContainer modal="createProject"><ProjectFormContainer refetchProjects={refetch} /></ModalContainer>
         </div> 
