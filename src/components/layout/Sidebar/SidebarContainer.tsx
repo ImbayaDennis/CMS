@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Sidebar from './Sidebar'
 
-type Props = {}
+type Props = Record<string, unknown>
 
 const SidebarContainer = (props: Props) => {
 

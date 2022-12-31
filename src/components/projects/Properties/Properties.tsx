@@ -41,7 +41,7 @@ const Properties = ({ fields, onChange, createField, toggleModal }: Props) => {
       </form>
       <button onClick={toggleModal} className='btn-1 my-2 sm:absolute sm:bottom-2 flex self-center items-center justify-center w-1/3 max-w-xs'><HiPlus/></button>
     </div>
-    <ModalContainer child={<PropertiesFormContainer/>} modal="createField" />
+    <ModalContainer modal="createField"><PropertiesFormContainer/></ModalContainer>
     </>
   );
 };

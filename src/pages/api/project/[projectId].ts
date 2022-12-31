@@ -35,7 +35,7 @@ const connectedProject = async (req: NextApiRequest, res: NextApiResponse) => {
       }[];
     }[];
 
-    let CleanObjArr: TCleanObjArr = [];
+    const CleanObjArr: TCleanObjArr = [];
     let CategoryName: string;
     let FieldName: string;
     let Fields: any[] = [];

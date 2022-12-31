@@ -3,11 +3,11 @@ import { ModalContextProvider } from '../../../contexts/ModalsContext'
 import Modal from './Modal'
 
 type Props = {
-    child: ReactNode;
+    children: ReactNode;
     modal: "createProject" | "createCategory" | "createField"
 }
 
-const ModalContainer = ({child, modal}: Props) => {
+const ModalContainer = ({children, modal}: Props) => {
     
   const modalContext = useContext(ModalContextProvider)
 
@@ -27,7 +27,7 @@ const ModalContainer = ({child, modal}: Props) => {
 
   if(modalContext?.modals && modalContext?.modals[modal].isOpen){
     return (
-      <Modal child={child} closeModal={closeModal} />
+      <Modal child={children} closeModal={closeModal} />
     )
   }
   return<></>

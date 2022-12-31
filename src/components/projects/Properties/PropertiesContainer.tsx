@@ -21,13 +21,13 @@ const PropertiesContainer = ({ category }: Props) => {
   }>();
 
   let FieldName: string;
-  let Fields: any[] = [];
+  const Fields: any[] = [];
 
   type TInitFields = typeof fields;
 
   const removeNulFields = (objectArr: TInitFields) => {
     let FieldName: string;
-    let Fields: any[] = [];
+    const Fields: any[] = [];
 
     fields?.forEach((field) => {
       FieldName = field.name;

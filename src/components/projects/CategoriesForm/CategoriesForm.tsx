@@ -8,7 +8,7 @@ type Props = {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     isLoading?: boolean
-    errors?: {}
+    errors?: Record<string, unknown>
 };
 
 const CategoriesForm = ({name, value, isLoading, onChange, handleSubmit}: Props) => {

@@ -3,7 +3,7 @@ import React from 'react'
 import Appbar from './Appbar'
 import img from "../../../assets/images/blank-profile-picture.jpg";
 
-type Props = {}
+type Props = Record<string, unknown>
 
 const AppbarContainer = (props: Props) => {
   const {data} = useSession()

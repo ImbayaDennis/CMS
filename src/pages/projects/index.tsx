@@ -28,7 +28,7 @@ const Projects: NextPage = () => {
             { !isLoading ? projects?.map((project)=><ProjectCardContainer key={project.id} projectName={project.name} projectId={project.id} />) : <Loader/>}
             <ProjectCardContainer children={<HiPlusCircle className="text-4xl" />} />
           </div>
-          <ModalContainer child={<ProjectFormContainer refetchProjects={refetch} />} modal="createProject" />
+          <ModalContainer modal="createProject"><ProjectFormContainer refetchProjects={refetch} /></ModalContainer>
         </div> 
     );
   }

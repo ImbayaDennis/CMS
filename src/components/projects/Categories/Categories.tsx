@@ -23,7 +23,7 @@ const Categories = ({categories, setActiveCategory, activeCategory, toggleModal,
         ))}
       <button onClick={toggleModal} className='btn-1 sm:absolute sm:bottom-2 my-2 flex self-center items-center justify-center w-1/3 max-w-xs'><HiPlus/></button>
       </div>
-      <ModalContainer child={<CategoriesFormContainer projectId={projectId} refetchCategories={refetchCategories}/>} modal="createCategory" />
+      <ModalContainer modal="createCategory"><CategoriesFormContainer projectId={projectId} refetchCategories={refetchCategories}/></ModalContainer>
     </>
   )
 }
