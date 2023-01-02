@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import { useState, Dispatch, SetStateAction } from 'react'
 import Sidebar from './Sidebar'
 
-type Props = Record<string, unknown>
+type Props = {
+  isDarkTheme: boolean;
+  setIsDarkTheme: Dispatch<SetStateAction<boolean>>
+}
 
-const SidebarContainer = (props: Props) => {
+const SidebarContainer = ({isDarkTheme, setIsDarkTheme}: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <Sidebar isOpen={isOpen} setState={setIsOpen} />
+    <Sidebar isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} isOpen={isOpen} setState={setIsOpen} />
   )
 }
 

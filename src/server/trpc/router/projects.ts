@@ -35,6 +35,8 @@ export const projectsRouter = router({
     .mutation(({ input, ctx }) => {
       return prisma?.project.create({
         data: { name: input.name, userId: ctx.session.user.id },
-      });
+      }).then((data)=>{
+        prisma?.connectedProject.create({data: {name: input.name, projectId: data.id}})
+      })
     }),
 });

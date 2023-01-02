@@ -1,15 +1,17 @@
 import Link from "next/link";
 import { ReactNode, Dispatch, SetStateAction, useState, useEffect } from "react";
-import { HiCollection, HiHome, HiMenu } from "react-icons/hi";
+import { HiCollection, HiHome, HiMenu, HiMoon, HiSun } from "react-icons/hi";
 import { links } from "../../../assets/constants";
 import { useRouter } from "next/router";
 
 type Props = {
   isOpen: boolean;
   setState: Dispatch<SetStateAction<boolean>>;
+  isDarkTheme: boolean;
+  setIsDarkTheme: Dispatch<SetStateAction<boolean>>
 };
 
-const Sidebar = ({ isOpen, setState }: Props) => {
+const Sidebar = ({ isOpen, setState, isDarkTheme, setIsDarkTheme }: Props) => {
   const width = isOpen ? "w-[20rem]" : "w-16";
 
   return (
@@ -22,19 +24,33 @@ const Sidebar = ({ isOpen, setState }: Props) => {
       >
         <HiMenu />
       </button>
-      <div className={`my-4 flex w-full flex-col self-start overflow-hidden`}>
-        <SidebarLink
-          sidebarOpen={isOpen}
-          link={links.home}
-          icon={<HiHome />}
-          to="Home"
-        />
-        <SidebarLink
-          sidebarOpen={isOpen}
-          link={links.projects}
-          icon={<HiCollection />}
-          to="Projects"
-        />
+      <div className=" flex w-full h-[calc(100vh-8rem)] flex-col justify-between">
+        <div className={`my-4 w-full flex flex-col overflow-hidden self-start`}>
+          <SidebarLink
+            sidebarOpen={isOpen}
+            link={links.home}
+            icon={<HiHome />}
+            to="Home"
+          />
+          <SidebarLink
+            sidebarOpen={isOpen}
+            link={links.projects}
+            icon={<HiCollection />}
+            to="Projects"
+          />
+        </div>
+        <div className="">
+          <button aria-label="Theme toggle" onClick={()=>{setIsDarkTheme(!isDarkTheme)}} className="flex w-full flex-nowrap border-l-4 items-center p-4 text-2xl text-gray-600 dark:text-gray-400 border-l-transparent">
+            <span>{isDarkTheme ? <HiSun/> : <HiMoon />} </span>
+            <span
+              className={`${
+                isOpen ? "opacity-100" : "opacity-0"
+              } ml-6 text-base transition-opacity whitespace-nowrap duration-300`}
+            >
+              {isDarkTheme ? "Set Light Theme" : "Set Dark Theme"}
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -61,7 +77,7 @@ const SidebarLink = ({
   const router = useRouter()
   return (
     <Link
-      className={`flex w-full flex-nowrap border-l-4 items-center p-4 text-2xl text-gray-500 hover:bg-gray-200 hover:dark:bg-gray-900 ${router.pathname === link ? _activeLink: "border-l-transparent"}`}
+      className={`flex w-full whitespace-nowrap flex-nowrap border-l-4 items-center p-4 text-2xl text-gray-500 hover:bg-gray-200 hover:dark:bg-gray-900 ${router.pathname === link ? _activeLink: "border-l-transparent"}`}
       aria-label={to}
       href={link}
       onClick={onClick}
