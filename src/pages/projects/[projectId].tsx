@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import {useState, FormEvent, useEffect} from 'react'
+import {useState, FormEvent, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import CategoriesContainer from '../../components/projects/Categories/CategoriesContainer'
 import PropertiesContainer from '../../components/projects/Properties/PropertiesContainer'
@@ -8,6 +8,7 @@ import { Category } from '@prisma/client'
 import { getCategories, getProject } from '../../utils/apiFunctions'
 import { HiClipboard } from 'react-icons/hi'
 import { env } from '../../env/client.mjs'
+import { useSession } from 'next-auth/react'
 
 const ProjectContainer: NextPage = () => {
   const router = useRouter()
@@ -16,10 +17,13 @@ const ProjectContainer: NextPage = () => {
   const {data: project} = getProject(projectId) 
   const[apiLink, setApiLink] = useState<string>("api.link")
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
+  const{status} = useSession()
 
   useEffect(()=>{
     setApiLink(`${env.NEXT_PUBLIC_BASE_URL}/api/project/${project?.connectedProjects[0]?.id}`)
   },[project])
+
+
 
   if(isLoading){
     return <Loader/>
@@ -33,7 +37,9 @@ const ProjectContainer: NextPage = () => {
     )
   }
   
-
+  if(status !== "authenticated"){
+    router.push("/")
+  }
 
 
   const copyToClipboard = (e: FormEvent<HTMLFormElement>) => {
