@@ -1,17 +1,23 @@
-import { useState, Dispatch, SetStateAction } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import Sidebar from './Sidebar'
 
 type Props = {
   isDarkTheme: boolean;
   setIsDarkTheme: Dispatch<SetStateAction<boolean>>
+  themeFromStorage: boolean
 }
 
-const SidebarContainer = ({isDarkTheme, setIsDarkTheme}: Props) => {
+const SidebarContainer = ({isDarkTheme, setIsDarkTheme, themeFromStorage}: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
+  const setTheme = () => {
+    setIsDarkTheme(!isDarkTheme)
+    localStorage.setItem("darkTheme", `${!isDarkTheme}`);
+  }
+
   return (
-    <Sidebar isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} isOpen={isOpen} setState={setIsOpen} />
+    <Sidebar isDarkTheme={themeFromStorage} setIsDarkTheme={setTheme} isOpen={isOpen} setState={setIsOpen} />
   )
 }
 
