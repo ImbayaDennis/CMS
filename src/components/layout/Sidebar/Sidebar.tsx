@@ -3,22 +3,20 @@ import {
   ReactNode,
   Dispatch,
   SetStateAction,
-  useState,
-  useEffect,
 } from "react";
 import { HiCollection, HiHome, HiMenu, HiMoon, HiSun } from "react-icons/hi";
 import { links } from "../../../assets/constants";
 import { useRouter } from "next/router";
 
 type Props = {
-  isOpen: boolean;
-  setState: Dispatch<SetStateAction<boolean>>;
+  sidebarIsOpen: boolean;
+  setSidebarIsOpen: Dispatch<SetStateAction<boolean>>;
   isDarkTheme: boolean;
   setIsDarkTheme: ()=>void;
 };
 
-const Sidebar = ({ isOpen, setState, isDarkTheme, setIsDarkTheme }: Props) => {
-  const width = isOpen ? "w-[20rem]" : "w-16";
+const Sidebar = ({ sidebarIsOpen, setSidebarIsOpen, isDarkTheme, setIsDarkTheme }: Props) => {
+  const width = sidebarIsOpen ? "w-[16rem]" : "w-16";
 
   return (
     <div
@@ -26,7 +24,7 @@ const Sidebar = ({ isOpen, setState, isDarkTheme, setIsDarkTheme }: Props) => {
     >
       <button
         aria-label="expand sidebar"
-        onClick={() => setState((prev) => !prev)}
+        onClick={() => setSidebarIsOpen((prev) => !prev)}
         className="self-end px-5 py-2 text-2xl text-gray-500 transition-colors hover:text-orange-600 hover:dark:text-orange-400"
       >
         <HiMenu />
@@ -34,13 +32,13 @@ const Sidebar = ({ isOpen, setState, isDarkTheme, setIsDarkTheme }: Props) => {
       <div className=" flex h-[calc(100vh-8rem)] w-full flex-col justify-between">
         <div className={`my-4 flex w-full flex-col self-start overflow-hidden`}>
           <SidebarLink
-            sidebarOpen={isOpen}
+            sidebarIsOpen={sidebarIsOpen}
             link={links.home}
             icon={<HiHome />}
             to="Home"
           />
           <SidebarLink
-            sidebarOpen={isOpen}
+            sidebarIsOpen={sidebarIsOpen}
             link={links.projects}
             icon={<HiCollection />}
             to="Projects"
@@ -63,7 +61,7 @@ const Sidebar = ({ isOpen, setState, isDarkTheme, setIsDarkTheme }: Props) => {
             </span>
             <span
               className={`${
-                isOpen ? "opacity-100" : "opacity-0"
+                sidebarIsOpen ? "opacity-100" : "opacity-0"
               } ml-6 whitespace-nowrap text-base transition-opacity duration-300`}
             >
               {isDarkTheme ? "Set Light Theme" : "Set Dark Theme"}
@@ -75,21 +73,22 @@ const Sidebar = ({ isOpen, setState, isDarkTheme, setIsDarkTheme }: Props) => {
   );
 };
 
+export default Sidebar;
+
 type SidebarLinkProps = {
   link: string;
   activeLink?: string;
   icon: ReactNode;
   to: string;
-  sidebarOpen: boolean;
+  sidebarIsOpen: boolean;
   onClick?: () => void;
 };
 
 const SidebarLink = ({
   link,
-  activeLink,
   icon,
   to,
-  sidebarOpen,
+  sidebarIsOpen,
   onClick,
 }: SidebarLinkProps) => {
   const _activeLink =
@@ -107,7 +106,7 @@ const SidebarLink = ({
       <span>{icon} </span>
       <span
         className={`${
-          sidebarOpen ? "opacity-100" : "opacity-0"
+          sidebarIsOpen ? "opacity-100" : "opacity-0"
         } ml-6 text-base transition-opacity duration-300`}
       >
         {to}
@@ -115,5 +114,3 @@ const SidebarLink = ({
     </Link>
   );
 };
-
-export default Sidebar;

@@ -16,7 +16,7 @@ export const projectsRouter = router({
     .query(async ({ input }) => {
       if (input?.projectId) {
         return await prisma?.project.findUnique({
-          where: { id: input.projectId }, include: {connectedProjects:true}
+          where: { id: input.projectId }, include: {connectedProject:true}
         });
       }
     }),

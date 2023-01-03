@@ -16,7 +16,7 @@ const SidebarContainer = ({isDarkTheme, setIsDarkTheme, themeFromStorage}: Props
   }
 
   return (
-    <Sidebar isDarkTheme={themeFromStorage} setIsDarkTheme={setTheme} isOpen={sidebarIsOpen} setState={setSidebarIsOpen} />
+    <Sidebar isDarkTheme={themeFromStorage} setIsDarkTheme={setTheme} sidebarIsOpen={sidebarIsOpen} setSidebarIsOpen={setSidebarIsOpen} />
   )
 }
 

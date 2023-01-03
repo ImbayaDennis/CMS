@@ -25,7 +25,9 @@ const ProjectContainer: NextPage = () => {
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
 
   useEffect(()=>{
-    setApiLink(`${env.NEXT_PUBLIC_BASE_URL}/api/project/${project?.connectedProjects[0]?.id}`)
+    setApiLink(
+      `${env.NEXT_PUBLIC_BASE_URL}/api/project/${project?.connectedProject?.id}`
+    );
   },[project])
 
   if(isLoading){

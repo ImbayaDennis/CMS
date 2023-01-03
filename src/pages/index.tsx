@@ -1,8 +1,6 @@
 import { NextPage } from "next";
 import {useEffect} from "react";
-import Loader from "../components/common/Loader";
 import { useSession } from "next-auth/react";
-import { getProjects } from "../utils/apiFunctions";
 import Link from "next/link";
 
 const Home: NextPage = () => {

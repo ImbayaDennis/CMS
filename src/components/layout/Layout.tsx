@@ -20,7 +20,7 @@ function Layout({children}: Props) {
         <AppbarContainer/>
         <div className="flex w-full h-full">
           <SidebarContainer themeFromStorage={themeFromStorage} isDarkTheme={isDarkTheme} setIsDarkTheme={setIsDarkTheme} />
-          <main className={`w-[calc(100vw-4rem)] h-full bg-gray-100 -z-10 left-16 fixed dark:bg-gray-800 text-gray-500 dark:text-gray-400`}>{children}</main>
+          <main className={`w-[calc(100vw-4rem)] h-full bg-gray-100 md:z-0 md:static -z-10 left-16 fixed dark:bg-gray-800 text-gray-500 dark:text-gray-400`}>{children}</main>
         </div>
     </div>
   )
