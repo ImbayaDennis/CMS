@@ -8,8 +8,7 @@ type Props = {
 }
 
 const SidebarContainer = ({isDarkTheme, setIsDarkTheme, themeFromStorage}: Props) => {
-
-  const [isOpen, setIsOpen] = useState(false)
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
 
   const setTheme = () => {
     setIsDarkTheme(!isDarkTheme)
@@ -17,7 +16,7 @@ const SidebarContainer = ({isDarkTheme, setIsDarkTheme, themeFromStorage}: Props
   }
 
   return (
-    <Sidebar isDarkTheme={themeFromStorage} setIsDarkTheme={setTheme} isOpen={isOpen} setState={setIsOpen} />
+    <Sidebar isDarkTheme={themeFromStorage} setIsDarkTheme={setTheme} isOpen={sidebarIsOpen} setState={setSidebarIsOpen} />
   )
 }
 

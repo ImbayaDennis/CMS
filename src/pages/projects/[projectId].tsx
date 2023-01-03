@@ -11,19 +11,22 @@ import { env } from '../../env/client.mjs'
 import { useSession } from 'next-auth/react'
 
 const ProjectContainer: NextPage = () => {
+  const{status} = useSession()
   const router = useRouter()
+
+  if(status !== "authenticated"){
+    router.isReady ? router.push("/") : null
+  }
+
   const {projectId} = router.query
   const {data: categories, isLoading, error, refetch} = getCategories({projectId})
-  const {data: project} = getProject(projectId) 
+  const {data: project} = getProject(router.isReady ? projectId : "") 
   const[apiLink, setApiLink] = useState<string>("api.link")
   const [activeCategory, setActiveCategory] = useState<Category | null>(null)
-  const{status} = useSession()
 
   useEffect(()=>{
     setApiLink(`${env.NEXT_PUBLIC_BASE_URL}/api/project/${project?.connectedProjects[0]?.id}`)
   },[project])
-
-
 
   if(isLoading){
     return <Loader/>
@@ -37,9 +40,7 @@ const ProjectContainer: NextPage = () => {
     )
   }
   
-  if(status !== "authenticated"){
-    router.push("/")
-  }
+
 
 
   const copyToClipboard = (e: FormEvent<HTMLFormElement>) => {

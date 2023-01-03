@@ -22,9 +22,10 @@ const Sidebar = ({ isOpen, setState, isDarkTheme, setIsDarkTheme }: Props) => {
 
   return (
     <div
-      className={`border-r bg-slate-100 dark:border-r-gray-900 dark:bg-slate-800 ${width}  flex h-full flex-col items-center transition-all`}
+      className={`border-r bg-slate-100 border-r-gray-300 dark:border-r-gray-900 dark:bg-slate-800 ${width}  flex h-full flex-col items-center transition-all`}
     >
       <button
+        aria-label="expand sidebar"
         onClick={() => setState((prev) => !prev)}
         className="self-end px-5 py-2 text-2xl text-gray-500 transition-colors hover:text-orange-600 hover:dark:text-orange-400"
       >
@@ -92,11 +93,11 @@ const SidebarLink = ({
   onClick,
 }: SidebarLinkProps) => {
   const _activeLink =
-    "dark:bg-gray-900 bg-gray-200 dark:border-l-orange-400 border-l-orange-600 dark:text-orange-400 text-orange-600";
+    "dark:bg-gray-900 bg-gray-300 dark:border-l-orange-400 border-l-orange-600 dark:text-orange-400 text-orange-600";
   const router = useRouter();
   return (
     <Link
-      className={`flex w-full flex-nowrap items-center whitespace-nowrap border-l-4 p-4 text-2xl text-gray-500 hover:bg-gray-200 hover:dark:bg-gray-900 ${
+      className={`flex w-full flex-nowrap items-center whitespace-nowrap border-l-4 p-4 text-2xl text-gray-500 hover:bg-gray-300 hover:dark:bg-gray-900 ${
         router.pathname === link ? _activeLink : "border-l-transparent"
       }`}
       aria-label={to}

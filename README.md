@@ -10,3 +10,9 @@ The application was bootstrapped using the `create-t3-app` command and includes 
 - [Prisma](https://prisma.io)
 - [TailwindCSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+
+## How it works
+When the user first opens the application, they are prompted to sign in. The application uses NextAuth's 0Auth for authentication and the two primary providers are Google and Github. Once the user signs in, they are redirected back to the homepage. At the moment, there isn't much content to be displayed so there is just a single button to redirect the user to the Projects page
+
+### Projects page
+This is where the user creates the projects that will link to the application's api.
