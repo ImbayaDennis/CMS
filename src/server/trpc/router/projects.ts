@@ -5,7 +5,7 @@ import { router, publicProcedure, protectedProcedure } from "../trpc";
 export const projectsRouter = router({
   getProjects: publicProcedure.query(({ ctx, input }) => {
     if (ctx.session?.user) {
-      return prisma?.project.findMany({
+      return ctx?.prisma?.project.findMany({
         where: { userId: ctx.session?.user?.id },
       });
     }
@@ -13,18 +13,18 @@ export const projectsRouter = router({
   }),
   getProject: protectedProcedure
     .input(z.object({ projectId: z.string().nullish() }).nullish())
-    .query(async ({ input }) => {
+    .query(async ({ input, ctx }) => {
       if (input?.projectId) {
-        return await prisma?.project.findUnique({
+        return await ctx?.prisma?.project.findUnique({
           where: { id: input.projectId }, include: {connectedProject:true}
         });
       }
     }),
   getConnectedProject: publicProcedure
     .input(z.object({ connectedProjectId: z.string().nullish() }).nullish())
-    .query(async ({ input }) => {
+    .query(async ({ input, ctx }) => {
       if (input?.connectedProjectId) {
-        return await prisma?.connectedProject.findUnique({
+        return await ctx?.prisma?.connectedProject.findUnique({
           where: { id: input.connectedProjectId },
           include: { project: true },
         });
@@ -33,10 +33,10 @@ export const projectsRouter = router({
   createProject: protectedProcedure
     .input(z.object({ name: z.string() }))
     .mutation(({ input, ctx }) => {
-      return prisma?.project.create({
+      return ctx?.prisma?.project.create({
         data: { name: input.name, userId: ctx.session.user.id },
       }).then((data)=>{
-        prisma?.connectedProject.create({data: {name: input.name, projectId: data.id}})
+        ctx?.prisma?.connectedProject.create({data: {name: input.name, projectId: data.id}})
       })
     }),
 });
