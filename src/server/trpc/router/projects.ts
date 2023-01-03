@@ -16,7 +16,8 @@ export const projectsRouter = router({
     .query(async ({ input, ctx }) => {
       if (input?.projectId) {
         return await ctx?.prisma?.project.findUnique({
-          where: { id: input.projectId }, include: {connectedProject:true}
+          where: { id: input.projectId },
+          include: { connectedProject: true },
         });
       }
     }),
@@ -33,10 +34,14 @@ export const projectsRouter = router({
   createProject: protectedProcedure
     .input(z.object({ name: z.string() }))
     .mutation(({ input, ctx }) => {
-      return ctx?.prisma?.project.create({
-        data: { name: input.name, userId: ctx.session.user.id },
-      }).then((data)=>{
-        ctx?.prisma?.connectedProject.create({data: {name: input.name, projectId: data.id}})
-      })
+      return ctx?.prisma?.project
+        .create({
+          data: { name: input.name, userId: ctx.session.user.id },
+        })
+        .then((data) => {
+          ctx?.prisma?.connectedProject.create({
+            data: { name: input.name, projectId: data.id },
+          });
+        });
     }),
 });
