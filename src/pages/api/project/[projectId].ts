@@ -8,10 +8,15 @@ const connectedProject = async (req: NextApiRequest, res: NextApiResponse) => {
     where: { id: req.url?.replace("/api/project/", "") },
     include: { project: true },
   });
-  const pid = connProject?.projectId;
+
+  if(!connProject){
+    res.status(500).json({
+      error: "Project undefined or broken url",
+    });
+  }
 
   const categories = await prisma.category.findMany({
-    where: { projectId: pid },
+    where: { projectId: connProject?.projectId },
     select: {
       name: true,
       fields: {
