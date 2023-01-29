@@ -6,7 +6,7 @@ import PropertiesContainer from "../../components/projects/Properties/Properties
 import Loader from "../../components/common/Loader";
 import { Category } from "@prisma/client";
 import { getCategories, getProject } from "../../utils/apiFunctions";
-import { HiClipboard } from "react-icons/hi";
+import { HiClipboard, HiPrinter } from "react-icons/hi";
 import { env } from "../../env/client.mjs";
 import { useSession } from "next-auth/react";
 
@@ -32,7 +32,7 @@ const ProjectContainer: NextPage = () => {
   useEffect(() => {
     if (project) {
       setApiLink(
-        `${env.NEXT_PUBLIC_BASE_URL}/api/project/${project?.connectedProject?.id}`
+        `${project?.connectedProject?.id ? `${env.NEXT_PUBLIC_BASE_URL}/api/project/${project.connectedProject.id}` : "No projects connected to this backend" } `
       );
     }
   }, [project]);
@@ -59,6 +59,8 @@ const ProjectContainer: NextPage = () => {
     alert("Link copied!");
   };
 
+  // const 
+
   return (
     <div className="h-full w-full">
       <form className="m-2 " onSubmit={(e) => copyToClipboard(e)}>
@@ -69,7 +71,7 @@ const ProjectContainer: NextPage = () => {
             type="submit"
             className="btn-1 flex w-16 items-center justify-center text-xl"
           >
-            <HiClipboard />
+            {project?.connectedProject ?  <HiClipboard /> : <HiPrinter />}
           </button>
         </div>
       </form>
