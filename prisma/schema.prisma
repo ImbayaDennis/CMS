@@ -12,6 +12,7 @@ datasource db {
   // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
   // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
   url      = env("DATABASE_URL")
+  relationMode = "foreignKeys"
 }
 
 model Project {
@@ -23,6 +24,8 @@ model Project {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model ConnectedProject {
@@ -30,6 +33,8 @@ model ConnectedProject {
   name      String
   projectId String @unique
   project  Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
 }
 
 model Category {
@@ -40,6 +45,8 @@ model Category {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
 }
 
 model Field {
@@ -53,6 +60,8 @@ model Field {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@index([categoryId])
 }
 
 model StringField{
@@ -60,6 +69,8 @@ model StringField{
   fieldId   String   @unique
   content   String
   field     Field @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+
+  @@index([fieldId])
 }
 
 model NumberField{
@@ -67,6 +78,8 @@ model NumberField{
   fieldId   String   @unique
   content   Float
   field     Field @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+
+  @@index([fieldId])
 }
 
 model BooleanField{
@@ -74,6 +87,8 @@ model BooleanField{
   fieldId   String   @unique
   content   Boolean
   field     Field @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+
+  @@index([fieldId])
 }
 
 model ImageField{
@@ -81,6 +96,8 @@ model ImageField{
   fieldId   String   @unique
   content   String
   field     Field @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+
+  @@index([fieldId])
 }
 
 // Necessary for Next auth
@@ -100,6 +117,7 @@ model Account {
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -108,6 +126,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model User {
